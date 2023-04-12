@@ -18,8 +18,8 @@ import (
 func main() {
 
 	//加载配置文件
-	var GCurDir, _ = filepath.Abs(filepath.Dir(os.Args[0]))
-	configfile := GCurDir + "/config/config.json"
+// 	var GCurDir, _ = filepath.Abs(filepath.Dir(os.Args[0]))
+	configfile := "config/config.json"
 	config.Loadconfig(configfile)
 
 	// 初始化路由

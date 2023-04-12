@@ -36,6 +36,16 @@ func (*{{.StructName}}Dao) SelectByID(id int) (*model.{{.StructName}}, error) {
 	return &m, nil
 }
 
+// All 查
+func (*{{.StructName}}Dao) All() (*[]model.{{.StructName}}, error) {
+	var ms []model.{{.StructName}}
+	err := model.DB.Find(&ms).Error
+	if err != nil {
+		return nil, err
+	}
+	return &ms, nil
+}
+
 // Update 改  map[string]interface{}{"name": "hello", "age": 18, "actived": false}
 func (*{{.StructName}}Dao) Update(id int, update map[string]interface{}) (*model.{{.StructName}}, error) {
 

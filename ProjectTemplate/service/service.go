@@ -54,6 +54,17 @@ type {{.StructName}}SelectBack struct {
 	model.{{.StructName}}
 }
 
+// All ...
+func (*{{.StructName}}Service) All() (*[]model.{{.StructName}}, error) {
+	dao := &dao.{{.StructName}}Dao{}
+	data, err := dao.All()
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
+}
+
+
 // Select ...
 func (*{{.StructName}}Service) Select(id int) (*{{.StructName}}SelectBack, error) {
 	dao := &dao.{{.StructName}}Dao{}

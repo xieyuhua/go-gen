@@ -15,6 +15,7 @@ func {{.StructNameLow}}Init(groupgo *gin.RouterGroup) {
 	groupgo.POST("/{{.StructNameLow}}/delete", {{.StructName}}Delete)
 	groupgo.POST("/{{.StructNameLow}}/update", {{.StructName}}Update)
 	groupgo.POST("/{{.StructNameLow}}/select", {{.StructName}}Select)
+	groupgo.GET("/{{.StructNameLow}}/all", {{.StructName}}All)
 }
 
 // {{.StructName}}Create ...
@@ -79,6 +80,22 @@ func {{.StructName}}Update(c *gin.Context) {
 	}
 	ser := &service.{{.StructName}}Service{}
 	back, err := ser.Update(&param)
+	if err != nil {
+		reply := NewReplyError(err.Error())
+		c.JSON(http.StatusOK, reply)
+		return
+	}
+	reply := NewReplyOk()
+	reply.Data = back
+	c.JSON(http.StatusOK, reply)
+	return
+}
+
+// {{.StructName}}All ...
+func {{.StructName}}All(c *gin.Context) {
+
+	ser := &service.{{.StructName}}Service{}
+	back, err := ser.All()
 	if err != nil {
 		reply := NewReplyError(err.Error())
 		c.JSON(http.StatusOK, reply)

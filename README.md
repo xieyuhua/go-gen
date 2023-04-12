@@ -25,17 +25,23 @@ mysql数据库访问使用gorm框架
 #### 安装教程
 + go get
 ```
-go get -u -v github.com/chenxiao1990/GenMysqlProject
+go get -u -v github.com/xieyuhua/go-gen
 
 (go get 最好在go.mod的工程下使用， 好走配置的proxy加速， 不然就得科学上网了)
 ```
 + 下载源码编译
 
 ```
-git clone git@github.com:chenxiao1990/GenMysqlProject.git
-cd GenMysqlProject
+cd go-gen
 go build 
 ./GenMysqlProject
+
+
+groupgo.POST("/zoomdeployapply/create", ZoomDeployApplyCreate)
+groupgo.POST("/zoomdeployapply/delete", ZoomDeployApplyDelete)
+groupgo.POST("/zoomdeployapply/update", ZoomDeployApplyUpdate)
+groupgo.POST("/zoomdeployapply/select", ZoomDeployApplySelect)
+groupgo.GET("/zoomdeployapply/all", ZoomDeployApplyAll)
 ```
 
  
