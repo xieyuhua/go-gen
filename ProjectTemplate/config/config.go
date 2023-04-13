@@ -50,3 +50,11 @@ func Loadconfig(configfile string) {
 }
 
 `
+
+var application = `
+jwt:
+  JwtSecret: 9C27D0C7C04BDA8A1F
+  JwtTokenExpire: 3600
+  JwtIssuer: ''
+
+`

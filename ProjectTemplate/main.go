@@ -10,13 +10,28 @@ import (
 	"{{.ProjectName}}/model"
 	_ "{{.ProjectName}}/service"
 	"log"
+	"github.com/spf13/viper"
 	"os"
 	"path/filepath"
 	"time"
 )
 
-func main() {
+ // 配置文件
+ func InitConfig()  {
+	workDir, _ := os.Getwd()
+	viper.SetConfigName("application")
+	viper.SetConfigType("yml")
+	viper.AddConfigPath(workDir + "/config")
+	err := viper.ReadInConfig()
+	if err != nil {
+		panic(err)
+	}
+}
 
+
+func main() {
+	//配置文件初始化
+	InitConfig()
 	//加载配置文件
 // 	var GCurDir, _ = filepath.Abs(filepath.Dir(os.Args[0]))
 	configfile := "config/config.json"
